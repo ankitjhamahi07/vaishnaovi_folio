@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vaishnaovi Tiwari | Compliance & Operations Team Lead</title>
     <meta name="description" content="Experienced Compliance & Operations Team Lead in Bengaluru, specializing in process improvement and team leadership. Proven track record at Amazon. Let's connect.">
+    <link rel="icon" type="image/png" href="v (1).png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
@@ -79,6 +80,17 @@
             max-width: 1400px;
             margin: 0 auto;
         }
+
+        /* Helper Text Styling */
+        .helper-text {
+            text-align: center;
+            font-size: 14px;
+            color: var(--slate);
+            font-style: italic;
+            margin-bottom: 60px;
+            opacity: 0.7;
+        }
+
 
         /* Hero Section */
         #hero {
@@ -281,19 +293,26 @@
         
         /* CORRECTED: Career Timeline Section */
         #career-timeline {
-            height: 100vh;
-            padding-left: 0;
-            padding-right: 0;
-            max-width: none; /* Allow it to span full width for pinning */
-            overflow-x: hidden;
+            height: 300vh; /* Make section long enough for scroll animation */
+            padding-top: 10vh;
+            padding-bottom: 10vh;
+            max-width: none;
+            overflow: hidden;
         }
         
+        .timeline-pin-container {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
         .timeline-horizontal-container {
             width: 100%;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding: 0 10vw;
         }
 
         #career-timeline h2 {
@@ -301,11 +320,15 @@
             font-size: clamp(32px, 5vw, 50px);
             font-weight: 800;
             color: var(--light-slate);
+            margin-bottom: 40px;
+        }
+
+        #career-timeline .helper-text {
             margin-bottom: 80px;
         }
         
         .timeline-track-wrapper {
-             width: 300%; /* Make track wider than screen */
+             width: 250vw;
              position: relative;
              height: 400px;
              display: flex;
@@ -315,15 +338,15 @@
         .timeline-path {
             position: absolute;
             top: 50%;
-            left: 10%;
-            right: 10%;
+            left: 0;
+            right: 0;
             height: 2px;
             background-color: var(--scroll-bar-color);
             transform: translateY(-50%);
         }
 
         .timeline-path-progress {
-            width: 0; /* Animated by GSAP */
+            width: 0;
             height: 100%;
             background-color: var(--teal);
         }
@@ -333,13 +356,13 @@
             display: flex;
             justify-content: space-around;
             width: 100%;
-            padding: 0 10%;
         }
 
         .timeline-milestone-horizontal {
             position: relative;
             width: 280px;
             opacity: 0;
+            transform: translateY(20px);
         }
 
         .milestone-dot-horizontal {
@@ -430,7 +453,7 @@
             font-size: clamp(32px, 5vw, 50px);
             font-weight: 800;
             color: var(--light-slate);
-            margin-bottom: 80px;
+            margin-bottom: 40px;
         }
         
         .skills-orbit-container {
@@ -783,6 +806,45 @@
             opacity: 0;
             transform: translateY(40px);
         }
+
+        .back-to-top-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--scroll-bar-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal);
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top-button.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top-button:hover {
+            background-color: #112240;
+            transform: translateY(-5px);
+        }
+
+        .back-to-top-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--teal);
+            stroke-width: 2;
+        }
+
     </style>
 </head>
 <body>
@@ -811,6 +873,9 @@
                 <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
+                </symbol>
+                 <symbol id="icon-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline>
                 </symbol>
             </defs>
         </svg>
@@ -880,6 +945,7 @@
         <!-- Career Timeline Section -->
         <section id="career-timeline">
             <h2 class="reveal">My Professional Journey</h2>
+            <p class="helper-text reveal">Scroll to travel through time.</p>
             <div class="timeline-horizontal-container reveal">
                 <div class="timeline-track-wrapper">
                     <div class="timeline-path">
@@ -934,6 +1000,7 @@
         <!-- Skills Galaxy Section -->
         <section id="skills-galaxy">
             <h2 class="reveal">My Skills Galaxy</h2>
+            <p class="helper-text reveal">Click a category to explore the constellation.</p>
             <div class="skills-orbit-container">
                  <div class="skill-category-node" data-skill-category="leadership">Leadership &<br>Collaboration</div>
                  <div class="skill-category-node" data-skill-category="process">Process &<br>Analysis</div>
@@ -944,6 +1011,7 @@
         <!-- Process Map Section -->
         <section id="process-map">
             <h2 class="reveal">My Approach to Process Improvement</h2>
+             <p class="helper-text reveal">Click a node to reveal the story behind the step.</p>
             <div class="process-map-container reveal">
                 <svg id="process-map-svg" class="process-map-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
                     <!-- SVG Icon Definitions -->
@@ -965,7 +1033,7 @@
                             <circle cx="-12" cy="-2" r="8"></circle>
                             <path d="M-20,20v-8c0-4.4,3.6-8,8-8h0"></path>
                             <circle cx="12" cy="-2" r="8"></circle>
-                            <path d="M20,20v-8c0-4.4-3.6-8,8-8h0"></path>
+                            <path d="M20,20v-8c0-4.4,3.6-8,8-8h0"></path>
                         </g>
                         <g id="icon-impl">
                             <rect x="-20" y="-15" width="40" height="30" rx="3"></rect>
@@ -1055,6 +1123,10 @@
                 </a>
             </div>
         </section>
+
+        <a href="#hero" id="back-to-top" class="back-to-top-button">
+            <svg><use href="#icon-arrow-up"></use></svg>
+        </a>
 
     </main>
 
@@ -1281,8 +1353,8 @@
                     const containerRect = constellationContainer.getBoundingClientRect();
 
                     gsap.set(card, {
-                        top: nodeRect.top - containerR.top + nodeRect.height + 20,
-                        left: nodeRect.left - containerR.left + nodeRect.width/2,
+                        top: nodeRect.top - containerRect.top + nodeRect.height + 20,
+                        left: nodeRect.left - containerRect.left + nodeRect.width/2,
                         xPercent: -50,
                         transformOrigin: '50% 0'
                     });
@@ -1304,7 +1376,7 @@
                 });
             }
 
-            // Career Timeline Animation
+            // CORRECTED Career Timeline Animation
             const timelineSection = document.getElementById('career-timeline');
             if (timelineSection) {
                 const track = document.querySelector(".timeline-track-wrapper");
@@ -1319,7 +1391,7 @@
                     scrollTrigger: {
                         trigger: timelineSection,
                         start: "center center",
-                        end: () => "+=" + (scrollWidth + window.innerWidth / 2),
+                        end: () => "+=" + scrollWidth,
                         scrub: true,
                         pin: true,
                         invalidateOnRefresh: true
@@ -1330,7 +1402,7 @@
                     scrollTrigger: {
                         trigger: timelineSection,
                         start: "center center",
-                        end: () => "+=" + (scrollWidth + window.innerWidth / 2),
+                        end: () => "+=" + scrollWidth,
                         scrub: true,
                     }
                 });
@@ -1579,6 +1651,21 @@
                 onEnterBack: () => kudosTl.play(),
                 onLeaveBack: () => kudosTl.pause()
             });
+
+            // Back to Top Button
+            const toTopBtn = document.getElementById('back-to-top');
+            if (toTopBtn) {
+                gsap.to(toTopBtn, {
+                    autoAlpha: 1,
+                    y: 0,
+                    scrollTrigger: {
+                        trigger: "body",
+                        start: "top -20%",
+                        end: "top -20%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            }
 
             // Global click listener to reset interactive elements
             document.addEventListener('click', (e) => {
