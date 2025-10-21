@@ -16,7 +16,6 @@
             --white: #FFFFFF;
             --teal: #64FFDA;
             --scroll-bar-color: #233554;
-            --focus-overlay: rgba(10, 25, 47, 0.85);
         }
 
         /* Basic Reset and Global Styles */
@@ -280,6 +279,145 @@
             100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
         }
         
+        /* CORRECTED: Career Timeline Section */
+        #career-timeline {
+            height: 100vh;
+            padding-left: 0;
+            padding-right: 0;
+            max-width: none; /* Allow it to span full width for pinning */
+            overflow-x: hidden;
+        }
+        
+        .timeline-horizontal-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #career-timeline h2 {
+            text-align: center;
+            font-size: clamp(32px, 5vw, 50px);
+            font-weight: 800;
+            color: var(--light-slate);
+            margin-bottom: 80px;
+        }
+        
+        .timeline-track-wrapper {
+             width: 300%; /* Make track wider than screen */
+             position: relative;
+             height: 400px;
+             display: flex;
+             align-items: center;
+        }
+
+        .timeline-path {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background-color: var(--scroll-bar-color);
+            transform: translateY(-50%);
+        }
+
+        .timeline-path-progress {
+            width: 0; /* Animated by GSAP */
+            height: 100%;
+            background-color: var(--teal);
+        }
+
+        .timeline-milestones-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 0 10%;
+        }
+
+        .timeline-milestone-horizontal {
+            position: relative;
+            width: 280px;
+            opacity: 0;
+        }
+
+        .milestone-dot-horizontal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--dark-navy);
+            border: 3px solid var(--teal);
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .milestone-connector-horizontal {
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            background-color: var(--teal);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-milestone-horizontal.position-top .milestone-connector-horizontal {
+            bottom: 50%;
+            top: -40px;
+        }
+        .timeline-milestone-horizontal.position-top .milestone-card-horizontal {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-milestone-horizontal.position-bottom .milestone-connector-horizontal {
+            top: 50%;
+            bottom: -40px;
+        }
+        .timeline-milestone-horizontal.position-bottom .milestone-card-horizontal {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .milestone-card-horizontal {
+            background-color: #112240;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--scroll-bar-color);
+            width: 100%;
+        }
+        
+        .milestone-date-horizontal {
+            font-size: 14px;
+            color: var(--teal);
+            margin-bottom: 8px;
+        }
+
+        .milestone-title-horizontal {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--light-slate);
+            margin-bottom: 4px;
+        }
+        
+        .milestone-company-horizontal {
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .milestone-desc-horizontal {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+
         /* Skills Galaxy Section */
         #skills-galaxy {
             min-height: 100vh;
@@ -601,75 +739,16 @@
             margin-bottom: 20px;
         }
         
-        .challenge-buttons {
-            margin: 40px 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .challenge-button {
-            background: transparent;
-            border: 1px solid var(--slate);
-            color: var(--slate);
-            padding: 12px 24px;
-            border-radius: 4px;
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .challenge-button:hover {
-            border-color: var(--teal);
-            color: var(--teal);
-        }
-
-        .challenge-button.active {
-            background-color: rgba(100, 255, 218, 0.1);
-            border-color: var(--teal);
-            color: var(--teal);
-            box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
-        }
-        
-        .solution-container {
-            min-height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .solution-text {
+        .contact-intro {
             font-size: 18px;
-            color: var(--light-slate);
             max-width: 600px;
+            margin: 20px auto 40px;
+            color: var(--light-slate);
             line-height: 1.6;
         }
-
-        .cta-final-container {
+        
+        .reach-out-container {
             margin-top: 40px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-        }
-
-        .download-resume-button {
-             color: var(--teal);
-            background-color: transparent;
-            border: 1px solid var(--teal);
-            padding: 15px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: inline-block;
-            margin-bottom: 40px;
-        }
-
-        .download-resume-button:hover {
-            background-color: rgba(100, 255, 218, 0.1);
         }
 
         .reach-out-text {
@@ -678,17 +757,26 @@
             margin-bottom: 15px;
         }
         
-        .decrypted-email-link {
+        .email-link {
             font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
             color: var(--teal);
             text-decoration: none;
             font-size: clamp(16px, 3vw, 20px);
             border-bottom: 1px solid transparent;
             transition: border-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .decrypted-email-link:hover {
+        .email-link:hover {
             border-bottom-color: var(--teal);
+        }
+
+        .email-icon {
+            width: 20px;
+            height: 20px;
+            stroke: var(--teal);
         }
 
         .reveal {
@@ -702,7 +790,7 @@
     <canvas id="particle-canvas"></canvas>
 
     <main class="content-container">
-        <!-- SVG Icon Definitions for Kudos Channel -->
+        <!-- SVG Icon Definitions for Kudos Channel & Contact -->
         <svg style="display: none;">
             <defs>
                 <symbol id="icon-manager" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -719,6 +807,10 @@
                 </symbol>
                 <symbol id="icon-vaishnaovi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </symbol>
+                <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
                 </symbol>
             </defs>
         </svg>
@@ -781,6 +873,60 @@
                     <div class="impact-story-card" data-node="impact-node-25">I led and coached a team of 25 specialists, overseeing daily operations and spearheading weekly performance reviews to ensure adherence to global compliance policies.</div>
                     <div class="impact-story-card" data-node="impact-node-15">By initiating process improvement mechanisms and delivering targeted training, we successfully reduced the average investigation cycle time.</div>
                     <div class="impact-story-card" data-node="impact-node-9">This increased efficiency directly resulted in a significant and consistent improvement in meeting and exceeding Service Level Agreements.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Timeline Section -->
+        <section id="career-timeline">
+            <h2 class="reveal">My Professional Journey</h2>
+            <div class="timeline-horizontal-container reveal">
+                <div class="timeline-track-wrapper">
+                    <div class="timeline-path">
+                        <div class="timeline-path-progress"></div>
+                    </div>
+                    <div class="timeline-milestones-wrapper">
+                        <div class="timeline-milestone-horizontal position-top">
+                            <div class="milestone-dot-horizontal"></div>
+                            <div class="milestone-connector-horizontal"></div>
+                            <div class="milestone-card-horizontal">
+                                <div class="milestone-date-horizontal">July 2019</div>
+                                <div class="milestone-title-horizontal">Project Engineer</div>
+                                <div class="milestone-company-horizontal">Wipro</div>
+                                <div class="milestone-desc-horizontal">Resolved technical issues and managed infrastructure deployment for a multinational telecommunications client.</div>
+                            </div>
+                        </div>
+                        <div class="timeline-milestone-horizontal position-bottom">
+                            <div class="milestone-dot-horizontal"></div>
+                            <div class="milestone-connector-horizontal"></div>
+                            <div class="milestone-card-horizontal">
+                                <div class="milestone-date-horizontal">September 2020</div>
+                                <div class="milestone-title-horizontal">Customer Service Associate</div>
+                                <div class="milestone-company-horizontal">Edureka</div>
+                                <div class="milestone-desc-horizontal">Provided high-quality customer support, investigating and resolving user problems to ensure satisfaction.</div>
+                            </div>
+                        </div>
+                        <div class="timeline-milestone-horizontal position-top">
+                            <div class="milestone-dot-horizontal"></div>
+                            <div class="milestone-connector-horizontal"></div>
+                            <div class="milestone-card-horizontal">
+                                <div class="milestone-date-horizontal">December 2021</div>
+                                <div class="milestone-title-horizontal">Learning Operations Executive</div>
+                                <div class="milestone-company-horizontal">Unacademy</div>
+                                <div class="milestone-desc-horizontal">Managed live online classroom experiences and drove student engagement initiatives on the platform.</div>
+                            </div>
+                        </div>
+                        <div class="timeline-milestone-horizontal position-bottom">
+                            <div class="milestone-dot-horizontal"></div>
+                            <div class="milestone-connector-horizontal"></div>
+                            <div class="milestone-card-horizontal">
+                                <div class="milestone-date-horizontal">February 2022</div>
+                                <div class="milestone-title-horizontal">Product Compliance Associate</div>
+                                <div class="milestone-company-horizontal">Amazon</div>
+                                <div class="milestone-desc-horizontal">Began my journey at Amazon, ensuring product safety and regulatory compliance across global marketplaces.</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -899,25 +1045,14 @@
 
         <!-- Part 3: Contact -->
         <section id="contact">
-             <h2 class="reveal">Let's Tackle Your...</h2>
-             <div class="challenge-buttons reveal">
-                <button class="challenge-button" data-solution="bottlenecks">
-                    [ Operational Bottlenecks ]
-                </button>
-                 <button class="challenge-button" data-solution="hurdles">
-                    [ Compliance Hurdles ]
-                </button>
-                 <button class="challenge-button" data-solution="scalability">
-                    [ Team Scalability ]
-                </button>
-             </div>
-             <div class="solution-container">
-                <p class="solution-text"></p>
-             </div>
-             <div class="cta-final-container">
-                <a href="#" class="download-resume-button">Download Resume</a>
-                <p class="reach-out-text">Or, reach out to me at:</p>
-                <a id="decrypted-email" class="decrypted-email-link" href="#"></a>
+             <h2 class="reveal">Get In Touch</h2>
+             <p class="contact-intro reveal">I'm always looking for new challenges and opportunities to drive meaningful impact. If my experience resonates with you, I'd love to connect.</p>
+             <div class="reach-out-container reveal">
+                <p class="reach-out-text">Reach out to me at:</p>
+                <a class="email-link" href="mailto:vaishnaovitiwari17@gmail.com">
+                    <svg class="email-icon"><use href="#icon-mail"></use></svg>
+                    <span>vaishnaovitiwari17@gmail.com</span>
+                </a>
             </div>
         </section>
 
@@ -1080,7 +1215,6 @@
                 const allNodes = Object.values(nodes);
                 
                 const resetFocusState = () => {
-                    // document.body.classList.remove('is-focused'); // REMOVED
                     if(hoverTl.progress() > 0) {
                         hoverTl.timeScale(1.5).reverse();
                     }
@@ -1107,14 +1241,12 @@
                 const container = document.querySelector('.impact-constellation-container');
                 container.addEventListener('mouseenter', () => {
                     if (!activeCard && isHoverable) {
-                        // document.body.classList.add('is-focused'); // REMOVED
                         hoverTl.timeScale(1).play();
                     }
                 });
 
                 container.addEventListener('mouseleave', () => {
                     if (!activeCard && isHoverable) {
-                        // document.body.classList.remove('is-focused'); // REMOVED
                         hoverTl.timeScale(1.5).reverse();
                     }
                 });
@@ -1143,15 +1275,14 @@
 
                 function showCard(card) {
                     activeCard = card;
-                    // document.body.classList.add('is-focused'); // REMOVED
                     hoverTl.timeScale(1).play();
                     const node = document.getElementById(card.dataset.node);
                     const nodeRect = node.getBoundingClientRect();
                     const containerRect = constellationContainer.getBoundingClientRect();
 
                     gsap.set(card, {
-                        top: nodeRect.top - containerRect.top + nodeRect.height + 20,
-                        left: nodeRect.left - containerRect.left + nodeRect.width/2,
+                        top: nodeRect.top - containerR.top + nodeRect.height + 20,
+                        left: nodeRect.left - containerR.left + nodeRect.width/2,
                         xPercent: -50,
                         transformOrigin: '50% 0'
                     });
@@ -1170,6 +1301,48 @@
                         y: 'random(-10, 10)', x: 'random(-5, 5)', duration: 'random(3, 5)',
                         repeat: -1, yoyo: true, ease: 'sine.inOut', delay: i * 0.5
                     });
+                });
+            }
+
+            // Career Timeline Animation
+            const timelineSection = document.getElementById('career-timeline');
+            if (timelineSection) {
+                const track = document.querySelector(".timeline-track-wrapper");
+                const milestones = gsap.utils.toArray(".timeline-milestone-horizontal");
+                const progress = document.querySelector(".timeline-path-progress");
+
+                let scrollWidth = track.offsetWidth - window.innerWidth;
+
+                gsap.to(track, {
+                    x: () => -scrollWidth,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: timelineSection,
+                        start: "center center",
+                        end: () => "+=" + (scrollWidth + window.innerWidth / 2),
+                        scrub: true,
+                        pin: true,
+                        invalidateOnRefresh: true
+                    }
+                });
+                
+                const milestonesTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: timelineSection,
+                        start: "center center",
+                        end: () => "+=" + (scrollWidth + window.innerWidth / 2),
+                        scrub: true,
+                    }
+                });
+
+                milestonesTl.to(progress, { width: '100%', ease: 'none'});
+
+                milestones.forEach((milestone, index) => {
+                    milestonesTl.to(milestone, {
+                        opacity: 1,
+                        y: 0,
+                        ease: 'power2.out'
+                    }, index * 0.1);
                 });
             }
 
@@ -1406,68 +1579,6 @@
                 onEnterBack: () => kudosTl.play(),
                 onLeaveBack: () => kudosTl.pause()
             });
-
-            // Interactive CTA Section
-            const challengeButtons = gsap.utils.toArray('.challenge-button');
-            const solutionText = document.querySelector('.solution-text');
-            const finalCtaContainer = document.querySelector('.cta-final-container');
-            const emailLink = document.getElementById('decrypted-email');
-
-            const solutions = {
-                bottlenecks: "I excel at identifying inefficiencies and redesigning workflows to improve cycle time and throughput.",
-                hurdles: "With deep expertise in global regulations, I can navigate complex compliance landscapes and mitigate risk.",
-                scalability: "I build and train high-performing teams, creating scalable systems and clear SOPs that support growth."
-            };
-            
-            let ctaTl = gsap.timeline();
-            let scrambleAnimation;
-
-            function decryptEmail() {
-                const finalEmail = 'vaishnaovitiwari17@gmail.com';
-                const chars = '!<>-_\\/[]{}—=+*^?#';
-                let iteration = 0;
-
-                clearInterval(scrambleAnimation);
-                
-                scrambleAnimation = setInterval(() => {
-                    emailLink.innerText = finalEmail
-                        .split("")
-                        .map((letter, index) => {
-                            if(index < iteration) {
-                                return finalEmail[index];
-                            }
-                            return chars[Math.floor(Math.random() * chars.length)]
-                        })
-                        .join("");
-                    
-                    if(iteration >= finalEmail.length){
-                        clearInterval(scrambleAnimation);
-                        emailLink.href = `mailto:${finalEmail}`;
-                    }
-                    
-                    iteration += 1 / 3;
-                }, 30);
-            }
-
-            challengeButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    if (button.classList.contains('active')) return;
-
-                    challengeButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-
-                    const solutionKey = button.dataset.solution;
-                    const newText = solutions[solutionKey];
-
-                    ctaTl.clear();
-                    ctaTl.to(solutionText, { opacity: 0, y: -10, duration: 0.3, ease: 'power2.in' })
-                         .call(() => solutionText.textContent = newText)
-                         .to(solutionText, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' })
-                         .to(finalCtaContainer, { opacity: 1, y: 0, visibility: 'visible', duration: 0.5 }, "-=0.2")
-                         .call(decryptEmail);
-                });
-            });
-
 
             // Global click listener to reset interactive elements
             document.addEventListener('click', (e) => {
