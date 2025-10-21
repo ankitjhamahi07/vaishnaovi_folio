@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaishnaovi Tiwari | Compliance & Operations Team Lead</title>
+    <meta name="description" content="Experienced Compliance & Operations Team Lead in Bengaluru, specializing in process improvement and team leadership. Proven track record at Amazon. Let's connect.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-navy: #0A192F;
+            --slate: #8892B0;
+            --light-slate: #ccd6f6;
+            --white: #FFFFFF;
+            --teal: #64FFDA;
+            --scroll-bar-color: #233554;
+            --focus-overlay: rgba(10, 25, 47, 0.85);
+        }
+
+        /* Basic Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-navy);
+            color: var(--slate);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark-navy);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--scroll-bar-color);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--slate);
+        }
+
+        /* Particle Background Canvas */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Main Container for all content */
+        .content-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            opacity: 1; 
+        }
+
+        /* General Section Styling */
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10vh 15vw;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-headline {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 800;
+            color: var(--white);
+            margin: 0;
+            line-height: 1.1;
+        }
+        
+        .hero-subheading-poetic {
+            font-size: clamp(16px, 3vw, 22px);
+            color: var(--teal);
+            margin-top: 30px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .hero-subheading-poetic .char,
+        .hero-intro .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .hero-intro {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 20px auto 0;
+            color: var(--light-slate);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--teal);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--teal);
+            text-decoration: none;
+            opacity: 0; 
+            transform: translateX(-50%);
+            animation: bounce 2.5s infinite 1.5s;
+            transition: background-color 0.3s ease;
+        }
+        
+        .scroll-indicator:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+            40% { transform: translate(-50%, -15px); }
+            60% { transform: translate(-50%, -7px); }
+        }
+
+        /* Narrative Story Flow Section */
+        #story {
+            padding-top: 5vh;
+            padding-bottom: 20vh;
+        }
+        
+        .story-chapter {
+            margin-bottom: 20vh;
+        }
+        
+        .story-chapter:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-chapter h2 {
+            font-size: clamp(32px, 5vw, 50px);
+            font-weight: 800;
+            color: var(--light-slate);
+            margin-bottom: 25px;
+        }
+        
+        .story-chapter h2 .accent {
+            color: var(--teal);
+        }
+
+        .story-chapter p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
+        
+        .impact-constellation-container {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            min-height: 400px;
+            margin-top: 60px;
+            z-index: 99;
+            transition: opacity 0.5s ease;
+        }
+
+        .impact-node {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            will-change: transform;
+            transition: opacity 0.4s ease;
+        }
+
+        .impact-node-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--scroll-bar-color);
+            border: 2px solid var(--slate);
+            transition: all 0.3s ease;
+            animation: pulse-constellation 4s infinite ease-in-out;
+        }
+
+        .impact-node-number {
+            font-size: clamp(30px, 4vw, 36px);
+            font-weight: 800;
+            color: var(--white);
+        }
+        
+        .impact-node-label {
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--slate);
+            text-align: center;
+        }
+        
+        .impact-node:hover .impact-node-circle {
+            background-color: #112240;
+            border-color: var(--teal);
+            transform: scale(1.05);
+        }
+
+        .impact-connections-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .connection-line {
+            stroke: var(--teal);
+            stroke-width: 2;
+        }
+
+        .connection-text {
+            fill: var(--teal);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .impact-story-card {
+            position: absolute;
+            width: 280px;
+            padding: 25px;
+            background-color: #112240;
+            border: 1px solid var(--teal);
+            border-radius: 8px;
+            color: var(--light-slate);
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 100;
+            transform-origin: center center;
+        }
+
+        @keyframes pulse-constellation {
+            0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.3); }
+            70% { box-shadow: 0 0 0 15px rgba(100, 255, 218, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
+        }
+        
+        /* Skills Galaxy Section */
+        #skills-galaxy {
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #skills-galaxy h2 {
+            font-size: clamp(32px, 5vw, 50px);
+            font-weight: 800;
+            color: var(--light-slate);
+            margin-bottom: 80px;
+        }
+        
+        .skills-orbit-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-category-node {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 180px;
+            height: 180px;
+            background-color: var(--scroll-bar-color);
+            color: var(--light-slate);
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: bold;
+            border: 2px solid var(--scroll-bar-color);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            will-change: transform, border-color, opacity, z-index;
+            z-index: 5;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .skill-category-node.is-active {
+            z-index: 10;
+        }
+
+        .skill-category-node:hover {
+            border-color: var(--teal);
+            transform: scale(1.05) !important;
+        }
+
+        .skill-category-node::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid var(--teal);
+            animation: pulse 2.5s infinite;
+            z-index: -1;
+        }
+
+        .skill-node-orbital {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            background-color: var(--dark-navy);
+            border: 2px solid var(--teal);
+            color: var(--light-slate);
+            border-radius: 50%;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 9;
+            opacity: 0;
+            transform: scale(0);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+            100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
+        }
+
+
+        /* Process Map Section */
+        #process-map {
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #process-map h2 {
+            font-size: clamp(32px, 5vw, 50px);
+            font-weight: 800;
+            color: var(--light-slate);
+            margin-bottom: 40px;
+        }
+        
+        .process-map-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-map-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .process-map-svg .line {
+            stroke: var(--scroll-bar-color);
+            stroke-width: 2;
+        }
+
+        .process-map-svg .node {
+            cursor: pointer;
+            transition: opacity 0.4s ease;
+        }
+        
+        .process-map-svg .node-circle {
+            fill: var(--scroll-bar-color);
+            stroke: var(--slate);
+            stroke-width: 2;
+            transition: all 0.3s ease;
+        }
+
+        .process-map-svg .branch-node .node-circle {
+            animation: pulse-map 3s infinite ease-in-out;
+        }
+
+        .process-map-svg .node-icon {
+            fill: none;
+            stroke: var(--light-slate);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .process-map-svg .node-text {
+            fill: var(--light-slate);
+            font-size: 14px;
+            font-weight: bold;
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+        .process-map-svg .node.active .node-circle {
+            fill: var(--dark-navy);
+            stroke: var(--teal);
+            stroke-width: 3;
+            animation: none;
+        }
+
+        .process-map-svg .node.active .node-icon {
+            stroke: var(--teal);
+        }
+        
+        .process-description-box {
+            position: absolute;
+            background-color: var(--scroll-bar-color);
+            border: 1px solid var(--teal);
+            border-radius: 8px;
+            padding: 20px;
+            color: var(--light-slate);
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 250px;
+            text-align: left;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .process-description-box.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        @keyframes pulse-map {
+            0% { filter: drop-shadow(0 0 4px rgba(100, 255, 218, 0)); }
+            50% { filter: drop-shadow(0 0 12px rgba(100, 255, 218, 0.6)); }
+            100% { filter: drop-shadow(0 0 4px rgba(100, 255, 218, 0)); }
+        }
+
+        /* Kudos/Feedback Section */
+        #kudos-channel {
+            text-align: center;
+        }
+        
+        #kudos-channel h2 {
+            font-size: clamp(32px, 5vw, 50px);
+            font-weight: 800;
+            color: var(--light-slate);
+            margin-bottom: 50px;
+        }
+        
+        .kudos-feed {
+            max-width: 700px;
+            margin: 0 auto;
+            border: 1px solid var(--scroll-bar-color);
+            background-color: #112240;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .kudos-message {
+            display: flex;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .kudos-message:last-child {
+            margin-bottom: 0;
+        }
+
+        .kudos-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--scroll-bar-color);
+            color: var(--teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .kudos-avatar svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--teal);
+        }
+
+        .kudos-content {
+            text-align: left;
+        }
+
+        .kudos-user {
+            font-weight: bold;
+            color: var(--light-slate);
+            margin-bottom: 5px;
+        }
+
+        .kudos-text {
+            color: var(--slate);
+            line-height: 1.6;
+        }
+        .kudos-text .highlight {
+            color: var(--teal);
+            font-weight: bold;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            margin-left: 55px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--slate);
+            border-radius: 50%;
+            margin: 0 3px;
+            animation: typing-bounce 1.2s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: -1.0s;
+        }
+        .typing-dot:nth-child(3) {
+            animation-delay: -0.8s;
+        }
+
+        @keyframes typing-bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+            padding-top: 10vh;
+            padding-bottom: 20vh;
+        }
+        
+        #contact h2 {
+            font-size: clamp(32px, 5vw, 50px);
+            font-weight: 800;
+            color: var(--light-slate);
+            margin-bottom: 20px;
+        }
+        
+        .challenge-buttons {
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .challenge-button {
+            background: transparent;
+            border: 1px solid var(--slate);
+            color: var(--slate);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-button:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .challenge-button.active {
+            background-color: rgba(100, 255, 218, 0.1);
+            border-color: var(--teal);
+            color: var(--teal);
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+        }
+        
+        .solution-container {
+            min-height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .solution-text {
+            font-size: 18px;
+            color: var(--light-slate);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .cta-final-container {
+            margin-top: 40px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .download-resume-button {
+             color: var(--teal);
+            background-color: transparent;
+            border: 1px solid var(--teal);
+            padding: 15px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .download-resume-button:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .reach-out-text {
+            color: var(--slate);
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .decrypted-email-link {
+            font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+            color: var(--teal);
+            text-decoration: none;
+            font-size: clamp(16px, 3vw, 20px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .decrypted-email-link:hover {
+            border-bottom-color: var(--teal);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="particle-canvas"></canvas>
+
+    <main class="content-container">
+        <!-- SVG Icon Definitions for Kudos Channel -->
+        <svg style="display: none;">
+            <defs>
+                <symbol id="icon-manager" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+                </symbol>
+                <symbol id="icon-collab1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+                </symbol>
+                <symbol id="icon-collab2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"></path>
+                </symbol>
+                <symbol id="icon-direct-report" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline>
+                </symbol>
+                <symbol id="icon-vaishnaovi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </symbol>
+            </defs>
+        </svg>
+
+        <!-- Part 1: Hero Section -->
+        <section id="hero">
+            <h1 class="hero-headline">Vaishnaovi Tiwari</h1>
+            <h3 class="hero-subheading-poetic">Architect of Growth, Advocate for Excellence.</h3>
+            <p class="hero-intro">A seamless journey of professional evolution, driven by curiosity and a commitment to impact.</p>
+            <a href="#story" class="scroll-indicator">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </section>
+
+        <!-- Part 2: The Narrative Flow -->
+        <section id="story">
+            <div class="story-chapter">
+                <h2 class="reveal">The Foundation: <span class="accent">Product Compliance Associate</span></h2>
+                <p class="reveal">My journey began at the core of Amazon's mission to be Earth's most customer-centric company. As a Product Compliance Associate, I immersed myself in the world of global regulations and safety standards. My focus was singular: protect customers by ensuring every product met rigorous compliance checks.</p>
+                <p class="reveal">This role honed my analytical skills and taught me the importance of precision in a high-volume, high-stakes environment.</p>
+            </div>
+            
+            <div class="story-chapter">
+                <h2 class="reveal">The Catalyst: <span class="accent">Becoming an SME</span></h2>
+                <p class="reveal">Driven by curiosity, I consistently sought to understand not just the 'what', but the 'why' behind our processes. This dedication led me to become a Subject Matter Expert (SME), where I served as a go-to resource for complex cases and trained new hires, shaping the next wave of compliance specialists.</p>
+                <p class="reveal">Earning <strong style="color:var(--teal);">6 'Above and Beyond' awards</strong> was a testament to my commitment to ownership and collaboration beyond my core responsibilities.</p>
+            </div>
+
+            <div class="story-chapter">
+                <h2 class="reveal">The Impact: <span class="accent">Team Lead</span></h2>
+                 <div class="impact-constellation-container reveal">
+                    <svg class="impact-connections-svg">
+                        <defs>
+                            <path id="path-25-15" d="M 151 101 A 200 200, 0, 0, 1, 451 101"></path>
+                            <path id="path-15-9" d="M 501 101 A 200 200, 0, 0, 1, 801 101"></path>
+                        </defs>
+                        <line id="line-25-15" class="connection-line" x1="150" y1="100" x2="450" y2="100"></line>
+                        <line id="line-15-9" class="connection-line" x1="500" y1="100" x2="800" y2="100"></line>
+                        <text class="connection-text">
+                            <textPath href="#path-25-15" startOffset="50%" text-anchor="middle">...enabled a...</textPath>
+                        </text>
+                        <text class="connection-text">
+                            <textPath href="#path-15-9" startOffset="50%" text-anchor="middle">...which drove a...</textPath>
+                        </text>
+                    </svg>
+                    <div id="impact-node-25" class="impact-node">
+                        <div class="impact-node-circle"><span class="impact-node-number">25</span></div>
+                        <div class="impact-node-label">Specialists Led</div>
+                    </div>
+                     <div id="impact-node-15" class="impact-node">
+                        <div class="impact-node-circle"><span class="impact-node-number">15%</span></div>
+                        <div class="impact-node-label">Cycle Time Reduction</div>
+                    </div>
+                     <div id="impact-node-9" class="impact-node">
+                        <div class="impact-node-circle"><span class="impact-node-number">9%</span></div>
+                        <div class="impact-node-label">SLA Improvement</div>
+                    </div>
+                    <div class="impact-story-card" data-node="impact-node-25">I led and coached a team of 25 specialists, overseeing daily operations and spearheading weekly performance reviews to ensure adherence to global compliance policies.</div>
+                    <div class="impact-story-card" data-node="impact-node-15">By initiating process improvement mechanisms and delivering targeted training, we successfully reduced the average investigation cycle time.</div>
+                    <div class="impact-story-card" data-node="impact-node-9">This increased efficiency directly resulted in a significant and consistent improvement in meeting and exceeding Service Level Agreements.</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Galaxy Section -->
+        <section id="skills-galaxy">
+            <h2 class="reveal">My Skills Galaxy</h2>
+            <div class="skills-orbit-container">
+                 <div class="skill-category-node" data-skill-category="leadership">Leadership &<br>Collaboration</div>
+                 <div class="skill-category-node" data-skill-category="process">Process &<br>Analysis</div>
+                 <div class="skill-category-node" data-skill-category="tools">Tools &<br>Platforms</div>
+            </div>
+        </section>
+
+        <!-- Process Map Section -->
+        <section id="process-map">
+            <h2 class="reveal">My Approach to Process Improvement</h2>
+            <div class="process-map-container reveal">
+                <svg id="process-map-svg" class="process-map-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+                    <!-- SVG Icon Definitions -->
+                    <defs>
+                        <g id="icon-data">
+                            <circle cx="0" cy="-5" r="14"></circle>
+                            <line x1="12" y1="7" x2="22" y2="17"></line>
+                        </g>
+                        <g id="icon-rca">
+                            <circle cx="0" cy="0" r="16"></circle>
+                            <circle cx="0" cy="0" r="8"></circle>
+                            <line x1="0" y1="-22" x2="0" y2="22"></line>
+                            <line x1="-22" y1="0" x2="22" y2="0"></line>
+                        </g>
+                        <g id="icon-sop">
+                            <path d="M22,13.2V22h-8.8v-2.2h6.6v-4.4h-4.4V11H22z M0,11h4.4v4.4H0V11z M6.6,11h4.4v4.4H6.6V11z M13.2,0v8.8h-2.2V2.2h-4.4v4.4H2.2V0H13.2z"></path>
+                        </g>
+                         <g id="icon-collab">
+                            <circle cx="-12" cy="-2" r="8"></circle>
+                            <path d="M-20,20v-8c0-4.4,3.6-8,8-8h0"></path>
+                            <circle cx="12" cy="-2" r="8"></circle>
+                            <path d="M20,20v-8c0-4.4-3.6-8,8-8h0"></path>
+                        </g>
+                        <g id="icon-impl">
+                            <rect x="-20" y="-15" width="40" height="30" rx="3"></rect>
+                            <line x1="0" y1="15" x2="0" y2="22"></line>
+                            <line x1="-10" y1="22" x2="10" y2="22"></line>
+                        </g>
+                        <g id="icon-impact">
+                            <polyline points="-20,15 -10,-5 0,8 10,-10 20,2"></polyline>
+                            <path d="M-20,20 l40,0 l0-40"></path>
+                        </g>
+                    </defs>
+
+                    <!-- Lines connecting nodes -->
+                    <line class="line" id="line-data" x1="500" y1="100" x2="200" y2="200" />
+                    <line class="line" id="line-rca" x1="200" y1="200" x2="200" y2="400" />
+                    <line class="line" id="line-sop" x1="200" y1="400" x2="500" y2="500" />
+                    <line class="line" id="line-collab" x1="500" y1="100" x2="800" y2="200" />
+                    <line class="line" id="line-impl" x1="800" y1="200" x2="800" y2="400" />
+                    <line class="line" id="line-impact" x1="800" y1="400" x2="500" y2="500" />
+
+                    <!-- Central Node -->
+                    <g class="node" id="node-challenge" transform="translate(500, 100)">
+                        <circle class="node-circle" r="80"></circle>
+                        <text class="node-text" dy=".3em">The Challenge</text>
+                    </g>
+                    <!-- Branching Nodes -->
+                    <g class="node branch-node" id="node-data" transform="translate(200, 200)">
+                        <circle class="node-circle" r="70"></circle>
+                        <use href="#icon-data" class="node-icon" transform="scale(1.2) translate(0, -15)"></use>
+                        <text class="node-text" dy="2.5em">Data Analysis</text>
+                    </g>
+                     <g class="node branch-node" id="node-rca" transform="translate(200, 400)">
+                        <circle class="node-circle" r="70"></circle>
+                        <use href="#icon-rca" class="node-icon" transform="scale(1.2) translate(0, -15)"></use>
+                        <text class="node-text" dy="2.5em">RCA</text>
+                    </g>
+                    <g class="node branch-node" id="node-sop" transform="translate(500, 500)">
+                        <circle class="node-circle" r="70"></circle>
+                        <use href="#icon-sop" class="node-icon" transform="scale(1.2) translate(-11, -25)"></use>
+                        <text class="node-text" dy="2.5em">SOP Development</text>
+                    </g>
+                    <g class="node branch-node" id="node-collab" transform="translate(800, 200)">
+                        <circle class="node-circle" r="70"></circle>
+                        <use href="#icon-collab" class="node-icon" transform="scale(1) translate(0, -20)"></use>
+                        <text class="node-text"><tspan x="0" dy="1.8em">Cross-Functional</tspan><tspan x="0" dy="1.2em">Collaboration</tspan></text>
+                    </g>
+                    <g class="node branch-node" id="node-impl" transform="translate(800, 400)">
+                        <circle class="node-circle" r="70"></circle>
+                        <use href="#icon-impl" class="node-icon" transform="scale(1.2) translate(0, -20)"></use>
+                         <text class="node-text"><tspan x="0" dy="1.8em">Implementation</tspan><tspan x="0" dy="1.2em">& Training</tspan></text>
+                    </g>
+                    <g class="node branch-node" id="node-impact" transform="translate(500, 300)">
+                        <circle class="node-circle" r="70"></circle> 
+                        <use href="#icon-impact" class="node-icon" transform="scale(1.2) translate(0, -15)"></use>
+                        <text class="node-text" dy="2.5em">Measuring Impact</text>
+                    </g>
+                </svg>
+                <div id="process-description-container"></div>
+            </div>
+        </section>
+
+        <!-- Live Kudos Channel Section -->
+        <section id="kudos-channel">
+            <h2 class="reveal">Live from the Kudos Channel</h2>
+            <div class="kudos-feed reveal">
+                <div id="kudos-feed-messages">
+                    <!-- Messages will be injected here by GSAP -->
+                </div>
+                <div class="typing-indicator" id="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Part 3: Contact -->
+        <section id="contact">
+             <h2 class="reveal">Let's Tackle Your...</h2>
+             <div class="challenge-buttons reveal">
+                <button class="challenge-button" data-solution="bottlenecks">
+                    [ Operational Bottlenecks ]
+                </button>
+                 <button class="challenge-button" data-solution="hurdles">
+                    [ Compliance Hurdles ]
+                </button>
+                 <button class="challenge-button" data-solution="scalability">
+                    [ Team Scalability ]
+                </button>
+             </div>
+             <div class="solution-container">
+                <p class="solution-text"></p>
+             </div>
+             <div class="cta-final-container">
+                <a href="#" class="download-resume-button">Download Resume</a>
+                <p class="reach-out-text">Or, reach out to me at:</p>
+                <a id="decrypted-email" class="decrypted-email-link" href="#"></a>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Particle Background Script ---
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let particlesArray;
+            const mouse = { x: null, y: null, radius: (canvas.height / 120) * (canvas.width / 120) };
+            window.addEventListener('mousemove', (event) => { mouse.x = event.x; mouse.y = event.y; });
+            class Particle {
+                constructor(x, y, directionX, directionY, size, color) { this.x = x; this.y = y; this.directionX = directionX; this.directionY = directionY; this.size = size; this.color = color; }
+                draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false); ctx.fillStyle = 'rgba(136, 146, 176, 0.3)'; ctx.fill(); }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) { this.directionX = -this.directionX; }
+                    if (this.y > canvas.height || this.y < 0) { this.directionY = -this.directionY; }
+                    let dx = mouse.x - this.x; let dy = mouse.y - this.y; let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius + this.size) {
+                        if (mouse.x < this.x && this.x < canvas.width - this.size * 10) { this.x += 2; }
+                        if (mouse.x > this.x && this.x > this.size * 10) { this.x -= 2; }
+                        if (mouse.y < this.y && this.y < canvas.height - this.size * 10) { this.y += 2; }
+                        if (mouse.y > this.y && this.y > this.size * 10) { this.y -= 2; }
+                    }
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+            function initParticles() {
+                particlesArray = []; let numberOfParticles = (canvas.height * canvas.width) / 9000;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    let size = (Math.random() * 2) + 1;
+                    let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                    let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                    let directionX = (Math.random() * 0.4) - 0.2; let directionY = (Math.random() * 0.4) - 0.2;
+                    particlesArray.push(new Particle(x, y, directionX, directionY, size, '#8892B0'));
+                }
+            }
+            function connectParticles() {
+                let opacityValue = 1;
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                        if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                            opacityValue = 1 - (distance / 20000);
+                            ctx.strokeStyle = `rgba(136, 146, 176, ${opacityValue * 0.2})`; ctx.lineWidth = 1;
+                            ctx.beginPath(); ctx.moveTo(particlesArray[a].x, particlesArray[a].y); ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
+                        }
+                    }
+                }
+            }
+            function animateParticles() { requestAnimationFrame(animateParticles); ctx.clearRect(0, 0, innerWidth, innerHeight); for (let i = 0; i < particlesArray.length; i++) { particlesArray[i].update(); } connectParticles(); }
+            window.addEventListener('resize', () => { canvas.width = innerWidth; canvas.height = innerHeight; mouse.radius = ((canvas.height / 120) * (canvas.width / 120)); initParticles(); });
+            window.addEventListener('mouseout', () => { mouse.x = undefined; mouse.y = undefined; });
+            initParticles();
+            animateParticles();
+
+            // --- GSAP & ScrollTrigger Animations ---
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Hero Animation on Page Load
+            const poeticSubheading = document.querySelector('.hero-subheading-poetic');
+            const poeticText = poeticSubheading.textContent;
+            poeticSubheading.innerHTML = poeticText.split('').map(char => `<span class="char">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
+
+            const introTagline = document.querySelector('.hero-intro');
+            const introText = introTagline.textContent;
+            introTagline.innerHTML = introText.split(' ').map(word => `<span class="word">${word}&nbsp;</span>`).join('');
+            
+            gsap.set('.hero-headline', { opacity: 0, y: 30 });
+            gsap.set('.hero-subheading-poetic .char', { opacity: 0, y: 20 });
+            gsap.set('.hero-intro .word', { opacity: 0, y: 20 });
+            gsap.set('.scroll-indicator', { opacity: 0 });
+            
+            const heroTl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
+            heroTl.to(".hero-headline", { opacity: 1, y: 0, duration: 1 })
+                .to(".hero-subheading-poetic .char", { opacity: 1, y: 0, stagger: 0.04, duration: 0.1 }, "-=0.8")
+                .to(".hero-intro .word", { opacity: 1, y: 0, stagger: 0.05, duration: 0.5 }, "-=0.6")
+                .to(".scroll-indicator", { opacity: 1, duration: 1 }, "-=0.5");
+
+
+            // Generic Reveal Animation
+            const revealElements = gsap.utils.toArray('.reveal');
+            revealElements.forEach(el => {
+                gsap.fromTo(el, { opacity: 0, y: 40 }, { 
+                    opacity: 1, y: 0, duration: 1, ease: "power3.out",
+                    scrollTrigger: { 
+                        trigger: el, 
+                        start: "top 85%", 
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+
+            // Interactive Constellation of Impact Animation
+            const constellationContainer = document.querySelector('.impact-constellation-container');
+            if(constellationContainer) {
+                const nodes = {
+                    node25: document.getElementById('impact-node-25'),
+                    node15: document.getElementById('impact-node-15'),
+                    node9: document.getElementById('impact-node-9')
+                };
+                const lines = {
+                    line25_15: document.getElementById('line-25-15'),
+                    line15_9: document.getElementById('line-15-9')
+                };
+                const textPaths = document.querySelectorAll('.connection-text textPath');
+                const storyCards = gsap.utils.toArray('.impact-story-card');
+                let activeCard = null;
+                let isHoverable = false;
+
+                gsap.set(nodes.node25, { left: '15%', top: '50%', yPercent: -50, xPercent: -50 });
+                gsap.set(nodes.node15, { left: '50%', top: '50%', yPercent: -50, xPercent: -50 });
+                gsap.set(nodes.node9, { left: '85%', top: '50%', yPercent: -50, xPercent: -50 });
+
+                const updateSVGPositions = () => {
+                    const r25 = nodes.node25.getBoundingClientRect();
+                    const r15 = nodes.node15.getBoundingClientRect();
+                    const r9 = nodes.node9.getBoundingClientRect();
+                    const containerR = constellationContainer.getBoundingClientRect();
+
+                    const p25 = { x: r25.left - containerR.left + r25.width / 2, y: r25.top - containerR.top + r25.height / 2 };
+                    const p15 = { x: r15.left - containerR.left + r15.width / 2, y: r15.top - containerR.top + r15.height / 2 };
+                    const p9 = { x: r9.left - containerR.left + r9.width / 2, y: r9.top - containerR.top + r9.height / 2 };
+
+                    gsap.set(lines.line25_15, { attr: { x1: p25.x, y1: p25.y, x2: p15.x, y2: p15.y } });
+                    gsap.set(lines.line15_9, { attr: { x1: p15.x, y1: p15.y, x2: p9.x, y2: p9.y } });
+                    
+                    const path25_15 = `M ${p25.x} ${p25.y} A ${Math.abs(p15.x - p25.x)/2} 100, 0, 0, 1, ${p15.x} ${p15.y}`;
+                    document.getElementById('path-25-15').setAttribute('d', path25_15);
+                    
+                    const path15_9 = `M ${p15.x} ${p15.y} A ${Math.abs(p9.x - p15.x)/2} 100, 0, 0, 1, ${p9.x} ${p9.y}`;
+                    document.getElementById('path-15-9').setAttribute('d', path15_9);
+                };
+                
+                setTimeout(updateSVGPositions, 100);
+                window.addEventListener('resize', updateSVGPositions);
+
+                gsap.set([lines.line25_15, lines.line15_9], {
+                    strokeDasharray: (i, el) => el.getTotalLength(),
+                    strokeDashoffset: (i, el) => el.getTotalLength()
+                });
+                gsap.set(textPaths, { opacity: 0 });
+
+                const hoverTl = gsap.timeline({ paused: true });
+                hoverTl.to(lines.line25_15, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.out' })
+                       .to(textPaths[0], { opacity: 1, duration: 0.5 }, '-=0.3')
+                       .to(lines.line15_9, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.out' })
+                       .to(textPaths[1], { opacity: 1, duration: 0.5 }, '-=0.3');
+
+                const allNodes = Object.values(nodes);
+                
+                const resetFocusState = () => {
+                    // document.body.classList.remove('is-focused'); // REMOVED
+                    if(hoverTl.progress() > 0) {
+                        hoverTl.timeScale(1.5).reverse();
+                    }
+                    if (activeCard) {
+                        gsap.to(activeCard, {
+                            opacity: 0, visibility: 'hidden', scale: 0.9, duration: 0.3
+                        });
+                        activeCard = null;
+                    }
+                };
+                
+                ScrollTrigger.create({
+                    trigger: constellationContainer,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    onToggle: self => {
+                        isHoverable = self.isActive;
+                        if (!self.isActive) {
+                            resetFocusState();
+                        }
+                    }
+                });
+
+                const container = document.querySelector('.impact-constellation-container');
+                container.addEventListener('mouseenter', () => {
+                    if (!activeCard && isHoverable) {
+                        // document.body.classList.add('is-focused'); // REMOVED
+                        hoverTl.timeScale(1).play();
+                    }
+                });
+
+                container.addEventListener('mouseleave', () => {
+                    if (!activeCard && isHoverable) {
+                        // document.body.classList.remove('is-focused'); // REMOVED
+                        hoverTl.timeScale(1.5).reverse();
+                    }
+                });
+
+                allNodes.forEach(node => {
+                    node.addEventListener('click', (e) => {
+                        if (!isHoverable) return;
+                        e.stopPropagation();
+                        const card = document.querySelector(`.impact-story-card[data-node="${node.id}"]`);
+                        
+                        if (activeCard && activeCard === card) {
+                           resetFocusState();
+                           return;
+                        }
+
+                        if (activeCard) {
+                            gsap.to(activeCard, {
+                                opacity: 0, visibility: 'hidden', scale: 0.9, duration: 0.3,
+                                onComplete: () => { showCard(card); }
+                            });
+                        } else {
+                            showCard(card);
+                        }
+                    });
+                });
+
+                function showCard(card) {
+                    activeCard = card;
+                    // document.body.classList.add('is-focused'); // REMOVED
+                    hoverTl.timeScale(1).play();
+                    const node = document.getElementById(card.dataset.node);
+                    const nodeRect = node.getBoundingClientRect();
+                    const containerRect = constellationContainer.getBoundingClientRect();
+
+                    gsap.set(card, {
+                        top: nodeRect.top - containerRect.top + nodeRect.height + 20,
+                        left: nodeRect.left - containerRect.left + nodeRect.width/2,
+                        xPercent: -50,
+                        transformOrigin: '50% 0'
+                    });
+
+                    gsap.to(card, { opacity: 1, visibility: 'visible', scale: 1, duration: 0.4, ease: 'power2.out' });
+                }
+
+                document.addEventListener('click', (e) => {
+                    if (activeCard && !e.target.closest('.impact-node')) {
+                        resetFocusState();
+                    }
+                });
+
+                allNodes.forEach((node, i) => {
+                    gsap.to(node, {
+                        y: 'random(-10, 10)', x: 'random(-5, 5)', duration: 'random(3, 5)',
+                        repeat: -1, yoyo: true, ease: 'sine.inOut', delay: i * 0.5
+                    });
+                });
+            }
+
+
+            // Skills Galaxy Animation
+            const skillsData = {
+                leadership: ['People Management', 'Team Leadership', 'Cross-Functional Collaboration', 'Training & Mentoring'],
+                process: ['Process Improvement', 'Root Cause Analysis', 'SOP Development', 'Risk Assessment'],
+                tools: ['Amazon Internal Tools', 'Jira', 'Confluence', 'MS Office']
+            };
+            const orbitContainer = document.querySelector('.skills-orbit-container');
+            const categoryNodes = gsap.utils.toArray('.skill-category-node');
+            let activeCategory = null;
+
+            gsap.set(categoryNodes, { opacity: 0 });
+            gsap.set(categoryNodes[0], { top: '10%', left: '15%' });
+            gsap.set(categoryNodes[1], { top: '10%', right: '15%' });
+            gsap.set(categoryNodes[2], { top: '60%', left: '50%', xPercent: -50 });
+
+            ScrollTrigger.create({
+                trigger: '#skills-galaxy',
+                start: 'top 70%',
+                onEnter: () => gsap.to(categoryNodes, { opacity: 1, stagger: 0.2, duration: 0.8, ease: 'power2.out' }),
+                onLeaveBack: () => gsap.to(categoryNodes, { opacity: 0, duration: 0.8, ease: 'power2.out' }),
+                toggleActions: 'play none none reverse'
+            });
+
+            categoryNodes.forEach(node => {
+                node.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const category = node.dataset.skillCategory;
+                    if (node === activeCategory) {
+                        resetOrbit(); 
+                        return;
+                    }
+                    if(activeCategory) { 
+                        resetOrbit(false); 
+                    }
+                    
+                    node.classList.add('is-active');
+                    activeCategory = node;
+                    
+                    const skills = skillsData[category];
+                    const tl = gsap.timeline();
+
+                    tl.to(categoryNodes, { opacity: (i, target) => (target === node) ? 1 : 0.2, duration: 0.5 })
+                    .to(node, {
+                        x: orbitContainer.offsetWidth / 2 - node.offsetLeft - node.offsetWidth / 2,
+                        y: orbitContainer.offsetHeight / 2 - node.offsetTop - node.offsetHeight / 2,
+                        borderColor: 'var(--teal)', duration: 0.7, ease: 'power2.inOut'
+                    });
+
+                    const radius = Math.min(orbitContainer.offsetWidth, orbitContainer.offsetHeight) / 3;
+                    skills.forEach((skill, index) => {
+                        const angle = (index / skills.length) * 2 * Math.PI;
+                        const xPos = Math.cos(angle) * radius;
+                        const yPos = Math.sin(angle) * radius;
+                        const skillEl = document.createElement('div');
+                        skillEl.className = 'skill-node-orbital';
+                        skillEl.textContent = skill;
+                        orbitContainer.appendChild(skillEl);
+                        gsap.set(skillEl, { top: '50%', left: '50%', xPercent: -50, yPercent: -50 });
+                        tl.to(skillEl, { x: xPos, y: yPos, opacity: 1, scale: 1, duration: 0.6, ease: 'power2.out' }, "-=0.5");
+                    });
+                });
+            });
+
+            function resetOrbit(animate = true) {
+                if (!activeCategory) return;
+                const orbitalNodes = gsap.utils.toArray('.skill-node-orbital');
+                const currentlyActive = activeCategory;
+                
+                currentlyActive.classList.remove('is-active');
+                activeCategory = null;
+
+                const tl = gsap.timeline({ onComplete: () => { orbitalNodes.forEach(n => n.remove()); }});
+
+                if (animate) {
+                    tl.to(orbitalNodes, { x: 0, y: 0, opacity: 0, scale: 0, duration: 0.6, ease: 'power2.in', stagger: 0.05 })
+                    .to(categoryNodes, { opacity: 1, duration: 0.5 }, "-=0.3")
+                    .to(currentlyActive, { x: 0, y: 0, borderColor: 'var(--scroll-bar-color)', duration: 0.7, ease: 'power2.inOut' }, "<");
+                } else {
+                    orbitalNodes.forEach(n => n.remove());
+                    gsap.set(currentlyActive, { x: 0, y: 0, borderColor: 'var(--scroll-bar-color)'});
+                    gsap.set(categoryNodes, { opacity: 1 });
+                }
+            }
+            
+            // Process Map Animation
+            const processNodes = gsap.utils.toArray('#process-map-svg .node');
+            const branchNodes = gsap.utils.toArray('#process-map-svg .branch-node');
+            const descriptionContainer = document.getElementById('process-description-container');
+            const svgContainer = document.querySelector('.process-map-container');
+            let activeProcessNode = null;
+
+            const descriptions = {
+                'node-data': "I start by gathering and analyzing relevant data to fully understand the scope of the problem.",
+                'node-rca': "I use deep-dive analysis to identify the fundamental cause of an issue, not just the symptoms.",
+                'node-sop': "I create clear, concise, and scalable Standard Operating Procedures to ensure lasting solutions.",
+                'node-collab': "I liaise with tech, legal, and business teams to ensure alignment and seamless execution.",
+                'node-impl': "I design and deliver training sessions to ensure new processes are adopted effectively by the team.",
+                'node-impact': "I track key metrics post-implementation to quantify the improvement and ensure goals are met."
+            };
+
+            processNodes.forEach(node => {
+                gsap.to(node, {
+                    y: '+=10', x: '+=5', duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: Math.random() * 2
+                });
+            });
+            
+            function showDescription(node) {
+                const nodeId = node.id;
+                const nodeRect = node.getBoundingClientRect();
+                const containerRect = svgContainer.getBoundingClientRect();
+                const descBox = document.createElement('div');
+                descBox.className = 'process-description-box';
+                descBox.textContent = descriptions[nodeId];
+                descriptionContainer.innerHTML = '';
+                descriptionContainer.appendChild(descBox);
+                
+                let top = nodeRect.top - containerRect.top + nodeRect.height / 2 - descBox.offsetHeight / 2;
+                let left = nodeRect.right - containerRect.left + 20;
+                
+                if (left + 250 > containerRect.width) {
+                    left = nodeRect.left - containerRect.left - 250 - 20;
+                }
+                
+                descBox.style.top = `${top}px`;
+                descBox.style.left = `${left}px`;
+                
+                requestAnimationFrame(() => { descBox.classList.add('visible'); });
+            }
+
+            function hideDescription() {
+                const descBox = descriptionContainer.querySelector('.process-description-box');
+                if (descBox) {
+                     descBox.classList.remove('visible');
+                     setTimeout(() => descriptionContainer.innerHTML = '', 400);
+                }
+            }
+
+            function resetProcessMap() {
+                if (!activeProcessNode) return;
+                activeProcessNode.classList.remove('active');
+                gsap.to(branchNodes, { opacity: 1, duration: 0.4 });
+                hideDescription();
+                activeProcessNode = null;
+            }
+
+            branchNodes.forEach(node => {
+                node.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (activeProcessNode === node) {
+                        resetProcessMap();
+                    } else {
+                        if (activeProcessNode) { activeProcessNode.classList.remove('active'); }
+                        node.classList.add('active');
+                        activeProcessNode = node;
+                        gsap.to(branchNodes, { opacity: target => (target === node ? 1 : 0.5), duration: 0.4 });
+                        const icon = node.querySelector('.node-icon');
+                        if (icon) {
+                            gsap.fromTo(icon, {rotation: 0}, { rotation: 360, duration: 0.8, ease: 'power2.out', transformOrigin: 'center center' });
+                        }
+                        showDescription(node);
+                    }
+                });
+            });
+
+            // Live Kudos Channel Animation
+            const kudosFeed = document.getElementById('kudos-feed-messages');
+            const typingIndicator = document.getElementById('typing-indicator');
+            const kudosData = [
+                { iconId: 'icon-manager', name: 'Manager', text: 'Team, sharing some incredible results from Q3. We\'ve seen a <span class="highlight">15% reduction</span> in investigation cycle time and a <span class="highlight">9% improvement</span> in SLA adherence. This is a huge step forward.' },
+                { iconId: 'icon-collab1', name: 'Collaborator (Tech)', text: 'This is great to see. The new SOPs Vaishnaovi developed were a game-changer for our workflow integration.' },
+                { iconId: 'icon-vaishnaovi', name: 'Vaishnaovi Tiwari', text: 'Thanks! It was a team effort. The cross-functional collaboration was key to getting this done right.' },
+                { iconId: 'icon-collab2', name: 'Collaborator (Legal)', text: 'Agreed. Vaishnaovi, your clear communication made the legal review process seamless. Much appreciated.' },
+                { iconId: 'icon-direct-report', name: 'Direct Report', text: 'Her mentorship was also huge. The training sessions were incredibly helpful for the whole team.' },
+                { iconId: 'icon-vaishnaovi', name: 'Vaishnaovi Tiwari', text: 'So glad to hear that! The goal is to empower everyone to do their best work.' },
+                { iconId: 'icon-manager', name: 'Manager', text: 'Mission accomplished. Your leadership has been instrumental. Let\'s use this as a model for Q4.' },
+                { iconId: 'icon-vaishnaovi', name: 'Vaishnaovi Tiwari', text: 'Absolutely. Already have some ideas.' }
+            ];
+
+            function createMessageHTML(msg) {
+                const el = document.createElement('div');
+                el.className = 'kudos-message';
+                el.innerHTML = `
+                    <div class="kudos-avatar">
+                        <svg><use href="#${msg.iconId}"></use></svg>
+                    </div>
+                    <div class="kudos-content">
+                        <div class="kudos-user">${msg.name}</div>
+                        <div class="kudos-text">${msg.text}</div>
+                    </div>
+                `;
+                return el;
+            }
+            
+            const kudosTl = gsap.timeline({
+                repeat: -1, 
+                repeatDelay: 5,
+                paused: true,
+                onStart: () => { kudosFeed.innerHTML = ''; }
+            });
+
+            kudosData.forEach((msg, index) => {
+                kudosTl.to(typingIndicator, { 
+                    opacity: 1, 
+                    duration: 0.3, 
+                    delay: index === 0 ? 0 : 1.5 + Math.random() 
+                })
+                .to(typingIndicator, { 
+                    opacity: 0, 
+                    duration: 0.3, 
+                    delay: 1.5 + Math.random() 
+                })
+                .call(() => {
+                    const msgEl = createMessageHTML(msg);
+                    kudosFeed.appendChild(msgEl);
+                    gsap.to(msgEl, { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 0.6, 
+                        ease: 'power2.out' 
+                    });
+                }, null, ">");
+            });
+
+
+            ScrollTrigger.create({
+                trigger: "#kudos-channel",
+                start: "top 70%",
+                onEnter: () => kudosTl.play(),
+                onLeave: () => kudosTl.pause(),
+                onEnterBack: () => kudosTl.play(),
+                onLeaveBack: () => kudosTl.pause()
+            });
+
+            // Interactive CTA Section
+            const challengeButtons = gsap.utils.toArray('.challenge-button');
+            const solutionText = document.querySelector('.solution-text');
+            const finalCtaContainer = document.querySelector('.cta-final-container');
+            const emailLink = document.getElementById('decrypted-email');
+
+            const solutions = {
+                bottlenecks: "I excel at identifying inefficiencies and redesigning workflows to improve cycle time and throughput.",
+                hurdles: "With deep expertise in global regulations, I can navigate complex compliance landscapes and mitigate risk.",
+                scalability: "I build and train high-performing teams, creating scalable systems and clear SOPs that support growth."
+            };
+            
+            let ctaTl = gsap.timeline();
+            let scrambleAnimation;
+
+            function decryptEmail() {
+                const finalEmail = 'vaishnaovitiwari17@gmail.com';
+                const chars = '!<>-_\\/[]{}—=+*^?#';
+                let iteration = 0;
+
+                clearInterval(scrambleAnimation);
+                
+                scrambleAnimation = setInterval(() => {
+                    emailLink.innerText = finalEmail
+                        .split("")
+                        .map((letter, index) => {
+                            if(index < iteration) {
+                                return finalEmail[index];
+                            }
+                            return chars[Math.floor(Math.random() * chars.length)]
+                        })
+                        .join("");
+                    
+                    if(iteration >= finalEmail.length){
+                        clearInterval(scrambleAnimation);
+                        emailLink.href = `mailto:${finalEmail}`;
+                    }
+                    
+                    iteration += 1 / 3;
+                }, 30);
+            }
+
+            challengeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (button.classList.contains('active')) return;
+
+                    challengeButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const solutionKey = button.dataset.solution;
+                    const newText = solutions[solutionKey];
+
+                    ctaTl.clear();
+                    ctaTl.to(solutionText, { opacity: 0, y: -10, duration: 0.3, ease: 'power2.in' })
+                         .call(() => solutionText.textContent = newText)
+                         .to(solutionText, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' })
+                         .to(finalCtaContainer, { opacity: 1, y: 0, visibility: 'visible', duration: 0.5 }, "-=0.2")
+                         .call(decryptEmail);
+                });
+            });
+
+
+            // Global click listener to reset interactive elements
+            document.addEventListener('click', (e) => {
+                if (activeCategory && !e.target.closest('.skill-category-node')) {
+                    resetOrbit();
+                }
+                if (activeProcessNode && !e.target.closest('.branch-node')) {
+                    resetProcessMap();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
